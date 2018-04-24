@@ -4,7 +4,7 @@ const _ = require('underscore');
 module.exports = function(token) {
 
     var access_token = token;
-    var host = 'https://api.timelyapp.com/1.0/';
+    var host = 'https://api.timelyapp.com/1.1/';
 
     var opts = {
         headers: {

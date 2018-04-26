@@ -15,48 +15,46 @@ module.exports = function(token) {
         }
     };
 
-    const _get = (path, params, callback)=> {
+    const _get = (path, params, callback )=> {
         request.get(host + path, opts,
              (error, response, body)=> {
                 if (error) return callback(error);
-                const data = (typeof body === 'string') ? data = JSON.parse(body) : body;
+                let data = (typeof body === 'string') ? data = JSON.parse(body) : body;
                 return callback(null, data);
         });
     };
 
     const _post = (path, params, callback) =>{
         request.post(host + path, { form: params }, opts,
-            function (error, response, body) {
+            (error, response, body) => {
                 if (error) return callback(error);
-                const data = (typeof body === 'string') ? data = JSON.parse(body) : body;
+                let data = (typeof body === 'string') ? data = JSON.parse(body) : body;
                 return callback(null, data);
         });
     };
 
-    const _delete = function(path, callback) {
+    const _delete = (path, callback) => {
         request.delete(host + path, opts,
-            function (error, response, body) {
+             (error, response, body) => {
                 if (error) return callback(error);
-                const data = (typeof body === 'string') ? data = JSON.parse(body) : body;
+                let data = (typeof body === 'string') ? data = JSON.parse(body) : body;
                 return callback(null, data);
         });
     };
 
-    const _put = function(path, params, callback) {
+    const _put = (path, params, callback) => {
         request.put(host + path, { form: params }, opts,
-            function (error, response, body) {
+            (error, response, body) => {
                 if (error) return callback(error);
-                const data = (typeof body === 'string') ? data = JSON.parse(body) : body;
+                let data = (typeof body === 'string') ? data = JSON.parse(body) : body;
                 return callback(null, data);
         });
     };
 
-    const extendEvent = function(data) {
+    const extendEvent = (data) => {
 
         if (_.isArray(data)) {
-            data.forEach(function(event) {
-                extendEvent(event);
-            });
+            data.forEach( event => extendEvent(event));
         } else {
             // PUT account_id:/events/:event_id
             data.update = function(params, cb) {

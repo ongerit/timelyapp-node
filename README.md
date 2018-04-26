@@ -4,9 +4,6 @@ Node package to make the TimelyApp OAuth 2 API accessible to node apps. This is
 very beta. It does not include an OAuth2 CLient (as yet). But it does implement the
 full API as documented on the TimelyApp.
 
-Note: This is not an official package. It's home grown and designed to scratch my
-dev itch. so...
-
 [ ![Codeship Status for d1b1/timelyapp-node](https://codeship.com/projects/155bddf0-63da-0134-68f7-3efe9c97f668/status?branch=master)](https://codeship.com/projects/175463)
 
 [![Coverage Status](https://coveralls.io/repos/github/d1b1/timelyapp-node/badge.svg)](https://coveralls.io/github/d1b1/timelyapp-node)
@@ -14,19 +11,25 @@ dev itch. so...
 ### Install
 This package will stay on gh until it gets its tests and a bit more polish.
 
-    npm install git+https://git@github.com/d1b1/timelyapp-node.git#master
+    npm install git+https://git@github.com/ongerit/timelyapp-node.git#master
 
     // Coming soon.
     // npm install timelyapp-node
 
 ### API Implemented
 The following are the api routes implemented. The OAuth2 server side calls are not
-relevant for this package. (Base URL https://api.timelyapp.com/1.0). The package
+relevant for this package. (Base URL https://api.timelyapp.com/1.1). The package
 API extends each entity with get, UPDATE, DELETE, and Entity specific list
 queries. The API structure is in flux, so `account.get` might change to `account.fetch`.
 Right now to access any sub entity, the users needs to walk the entity tree, this
 is changing. The four base APIs return User, Project, Account, Client or Event
 entities.
+
+Variables you need to set
+ * `account_id`
+ * `project_id`
+ * `user_id`
+ * `event_id`
 
 Root Functions (No entity required).
  * `accounts.list(cb)` /accounts - Get a list of all accounts.
@@ -129,22 +132,6 @@ Create an Project (uses an account entity)
 ### Qualifications
 This wrapper does not enforce pre-flight data validation. And will (soon) simple
 echo back the response errors. So dev at your own risk.
-
-### Why?
-I am a Boston full stack dev, I have used a crap ton of different time and billing systems;
-harvest, freshbooks, etc. (And I have written a few) TimelyApp.com is hands down the best
-on the market. The UI is super skookum, and perfect for a distributed dev team. It's not feature
-heavy so is fast to get started with. The iphone + desktop + web + iwatch apps make it
-easy to access from any part of the day. The focus on daily billable makes it super easy
-to track high and low billable days. This app has made it easier for me to mix in dev
-work on side projects, by making it super clear where I stand for the day, week and
-months.
-
-But since they are a startup, there are some features missing, so I wrote this wrapper
-to make it easier to write helper reports and app for myself and team.
-
-At the time of this work, the client side OAuth2 implementation was not working
-with their API, which required a server endpoint to handle the Auth workflow.
 
 ### References
 1. https://dev.timelyapp.com/

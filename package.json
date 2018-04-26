@@ -1,12 +1,14 @@
 {
   "name": "timelyapp-node",
-  "version": "0.0.2",
-  "description": "Node package for the TimelyApp API.",
-  "main": "index.js",
-  "author": "Stephan Smith",
+  "version": "0.0.5",
+  "description": "Node package for the TimelyApp API v.1.1.",
+  "main": "./dist/index.js",
+  "author": "Thomas Ongeri",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec --timeout 10000 test",
+    "prepublish": "npm run build",
     "coverage": "istanbul cover _mocha test -- -t 10000 -R spec",
+    "build": "babel source --presets babel-preset-es2015 --out-dir dist",
     "coveralls": "npm run-script coverage && node node_modules/.bin/coveralls < coverage/lcov.info"
   },
   "license": "MIT",
@@ -15,6 +17,8 @@
     "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "chai": "^3.5.0",
     "coveralls": "^2.11.14",
     "istanbul": "^0.4.5",

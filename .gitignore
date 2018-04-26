@@ -1,3 +1,5 @@
+# NPM ignores dist
+dist
 
 # Logs
 logs

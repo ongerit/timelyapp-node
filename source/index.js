@@ -3,10 +3,10 @@ const _ = require('underscore');
 
 module.exports = function(token) {
 
-    var access_token = token;
-    var host = 'https://api.timelyapp.com/1.1/';
+    const access_token = token;
+    const host = 'https://api.timelyapp.com/1.1/';
 
-    var opts = {
+    const opts = {
         headers: {
             'Content-Type': 'application/json'
         },
@@ -15,43 +15,43 @@ module.exports = function(token) {
         }
     };
 
-    var _get = function(path, params, callback) {
+    const _get = (path, params, callback)=> {
         request.get(host + path, opts,
-            function (error, response, body) {
+             (error, response, body)=> {
                 if (error) return callback(error);
-                var data = (typeof body === 'string') ? data = JSON.parse(body) : body;
+                const data = (typeof body === 'string') ? data = JSON.parse(body) : body;
                 return callback(null, data);
         });
     };
 
-    var _post = function(path, params, callback) {
+    const _post = (path, params, callback) =>{
         request.post(host + path, { form: params }, opts,
             function (error, response, body) {
                 if (error) return callback(error);
-                var data = (typeof body === 'string') ? data = JSON.parse(body) : body;
+                const data = (typeof body === 'string') ? data = JSON.parse(body) : body;
                 return callback(null, data);
         });
     };
 
-    var _delete = function(path, callback) {
+    const _delete = function(path, callback) {
         request.delete(host + path, opts,
             function (error, response, body) {
                 if (error) return callback(error);
-                var data = (typeof body === 'string') ? data = JSON.parse(body) : body;
+                const data = (typeof body === 'string') ? data = JSON.parse(body) : body;
                 return callback(null, data);
         });
     };
 
-    var _put = function(path, params, callback) {
+    const _put = function(path, params, callback) {
         request.put(host + path, { form: params }, opts,
             function (error, response, body) {
                 if (error) return callback(error);
-                var data = (typeof body === 'string') ? data = JSON.parse(body) : body;
+                const data = (typeof body === 'string') ? data = JSON.parse(body) : body;
                 return callback(null, data);
         });
     };
 
-    var extendEvent = function(data) {
+    const extendEvent = function(data) {
 
         if (_.isArray(data)) {
             data.forEach(function(event) {
@@ -101,7 +101,7 @@ module.exports = function(token) {
         return data;
     };
 
-    var extendProject = function(data) {
+    const extendProject = function(data) {
 
         if (_.isArray(data)) {
             data.forEach(function(project) {
@@ -151,7 +151,7 @@ module.exports = function(token) {
         return data;
     };
 
-    var extendClient = function(data) {
+    const extendClient = function(data) {
 
         if (_.isArray(data)) {
             data.forEach(function(project) {
@@ -186,7 +186,7 @@ module.exports = function(token) {
         return data;
     };
 
-    var extendUser = function(data) {
+    const extendUser = function(data) {
 
         if (_.isArray(data)) {
             data.forEach(function(project) {
@@ -236,7 +236,7 @@ module.exports = function(token) {
         return data;
     };
 
-    var extendAccount = function(data) {
+    const extendAccount = function(data) {
 
         if (_.isArray(data)) {
             data.forEach(function(account) {

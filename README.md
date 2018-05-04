@@ -14,7 +14,7 @@ dev itch. so...
 ### Install
 This package will stay on gh until it gets its tests and a bit more polish.
 
-    npm install git+https://git@github.com/d1b1/timelyapp-node.git#master
+    npm install git+https://git@github.com/ongerit/timelyapp-node.git#master
 
     // Coming soon.
     // npm install timelyapp-node
